@@ -3,8 +3,8 @@
     <img src="../assets/images/Clouzot02.jpg" alt="Clouzot movie">
     <div class="text-container">
         <div class="text">
-            <span class="mini-heading">Now streaming</span>
-            <h1><span>Now</span>Streaming</h1>
+            <span class="mini-heading">Movie search engine</span>
+            <h1><span>BestOf</span>Movies</h1>
             <a href="#movie-grid" class="button">View Movies</a>
         </div>
     </div>

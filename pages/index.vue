@@ -2,7 +2,7 @@
   <div class="home">
 <Hero-pics/>
 <div class="container search" >
-  <input @keyup.enter="$fetch" type="text" placeholder="Search" v-model.lazy="searchInput">
+  <input type="text"  placeholder="Search" v-model.lazy="searchInput" @keyup.enter="$fetch" >
   
 </div>
 <!-- Movie -->
@@ -90,11 +90,14 @@ export default {
   .search {
     display: flex;
     padding: 32px 16px;
+    justify-content: space-around;
+   
     input {
       max-width: 350px;
       width: 100%;
       padding: 12px 6px;
       font-size: 14px;
+       border-radius: 50px;
       border: none;
       &:focus {
         outline: none;

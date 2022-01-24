@@ -2,7 +2,7 @@
   <div class="home">
 <Hero-pics/>
 <div class="container search" >
-  <input type="text"  placeholder="Search" v-model.lazy="searchInput" @keyup.enter="$fetch" >
+  <input type="text"  placeholder="Search" v-model="searchInput"  @keyup.enter="$fetch" >
   
 </div>
 <!-- Movie -->
@@ -103,7 +103,6 @@ export default {
        })
       },
       async searchMovies() {
-       
         const data = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65edaf62da630f3d1bc494487dfe9722&language=en-US&page=1&query=${this.searchInput}`)
         const result = await data
        result.data.results.forEach((movie) => {
@@ -118,18 +117,13 @@ export default {
        }
       
   },
-  watch: 
-  {
-    watchInput: function() {
-     if(this.searchInput === ''){
-
-           this.searchMovies = []
-     }
-     
-   }
-
+  watch: {
+    watchInput() {
+      if( this.searchInput === ""){
+        this.clearSearch()
+      }
+    }
   }
-   
   
 }
 </script>

@@ -4,7 +4,7 @@
     <div class="text-container">
         <div class="text">
             <span class="mini-heading">Movie search engine</span>
-            <h1><span>BestOf</span>Movies</h1>
+            <h1><span>Best</span><span class="greenTitle">Of</span>Movies</h1>
             <a href="#movie-grid" class="button">View Movies</a>
         </div>
     </div>
@@ -59,7 +59,7 @@ export default {
       font-weight: 600;
       font-size: 18px;
       text-transform: uppercase;
-      color: #c92502;
+      color: #128902;
       margin-bottom: 8px;
       @media (min-width: 750px) {
         font-size: 22px;
@@ -75,6 +75,9 @@ export default {
       }
       span {
         font-weight: 500;
+      }
+      .greenTitle{
+        color:#128902;
       }
     }
     .button {

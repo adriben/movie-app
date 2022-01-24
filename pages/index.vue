@@ -7,7 +7,7 @@
 </div>
 <!-- Movie -->
 <div class="container movies">
-  <div id="movie-grid" class="movies-grid">
+  <div id="movie-grid" class="movies-grid" v-if="searchInput === ''">
    <div v-for="(movie, index) in movies" :key='index' class="movie">
      <div class="movie-img">
        <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="">
@@ -32,6 +32,37 @@
         <NuxtLink class="button button-light" :to="{name: 'movies-movieid', params: { movieid: movie.id}}">More Infos</NuxtLink>
       </div>
 
+      
+
+   </div>
+  </div>
+
+  <div id="movie-grid" class="movies-grid" v-else>
+   <div v-for="(movie, index) in searchedMovies" :key='index' class="movie">
+     <div class="movie-img">
+       <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" alt="">
+    
+     <p class="review">
+       {{ movie.vote_average}}
+     </p>
+     <p class="overview">
+       {{ movie.overview}}
+     </p>
+      </div>
+      <div class="info">
+        <p class="title">
+          {{ movie.title.slice(0, 25) }} <span v-if="movie.title.length > 25">...</span>
+        </p>
+        <p class="release">
+          Released:
+          {{
+            movie.release_date
+          }}
+        </p>
+        <NuxtLink class="button button-light" :to="{name: 'movies-movieid', params: { movieid: movie.id}}">More Infos</NuxtLink>
+      </div>
+
+
    </div>
   </div>
 </div>
@@ -50,34 +81,56 @@ export default {
       searchInput: ""
     }
   },
-  async fetch(){
-    if(this.searchInput === ''){
-       await this.getMovies()
-       return
-    } 
-      await this.searchMovies()
+  async fetch() {
+    if (this.searchInput === '') {
+      
 
-    
-     
+      await this.getMovies()
+      return
+    }
+    if (this.searchInput !== '') {
+      await this.searchMovies()
+  
+    }
   },
+  fetchDelay: 1000,
   methods: {
       async getMovies() {
-        const data = axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
+        const data = axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=65edaf62da630f3d1bc494487dfe9722&language=en-US&page=1`)
         const result = await data
        result.data.results.forEach(movie => {
          this.movies.push(movie)
        })
       },
       async searchMovies() {
-        const data = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1&query=${this.searchInput}`)
+       
+        const data = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=65edaf62da630f3d1bc494487dfe9722&language=en-US&page=1&query=${this.searchInput}`)
         const result = await data
-       result.data.results.forEach(movie => {
+       result.data.results.forEach((movie) => {
          this.searchedMovies.push(movie)
        })
-       console.log(this.searchedMovies);
-      }
+       
+      },
+       
+       clearSearch() {
+         this.searchInput = "";
+         this.searchMovies = []
+       }
       
+  },
+  watch: 
+  {
+    watchInput: function() {
+     if(this.searchInput === ''){
+
+           this.searchMovies = []
+     }
+     
+   }
+
   }
+   
+  
 }
 </script>
 
@@ -150,7 +203,7 @@ export default {
             align-items: center;
             width: 40px;
             height: 40px;
-            background-color: #c92502;
+            background-color: #128902;
             color: #fff;
             border-radius: 0 0 16px 0;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -160,7 +213,7 @@ export default {
             line-height: 1.5;
             position: absolute;
             bottom: 0;
-            background-color: rgba(201, 38, 2, 0.9);
+            background-color: rgba(2, 201, 45, 0.9);
             padding: 12px;
             color: #fff;
             transform: translateY(100%);

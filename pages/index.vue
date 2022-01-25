@@ -10,9 +10,9 @@
       />
     </div>
     <!-- Movie -->
-    <h2 v-if="searchInput === ''">Latest release</h2>
+    <h2 v-if="searchedMovies.length === 0">Latest release</h2>
     <div class="container movies">
-      <div id="movie-grid" class="movies-grid" v-if="searchInput === ''">
+      <div id="movie-grid" class="movies-grid" v-if="searchedMovies.length === 0">
         <div v-for="(movie, index) in movies" :key="index" class="movie">
           <div class="movie-img">
             <img
@@ -105,6 +105,7 @@ export default {
     }
     if (this.searchInput !== '') {
       await this.searchMovies()
+      
     }
   },
   fetchDelay: 1000,
@@ -126,20 +127,14 @@ export default {
       result.data.results.forEach((movie) => {
         this.searchedMovies.push(movie)
       })
+      
     },
 
     clearSearch() {
       this.searchInput = ''
-      this.searchMovies = []
+      this.searchedMovies = []
     },
-  },
-  watch: {
-    watchInput() {
-      if (this.searchInput === '') {
-        this.clearSearch()
-      }
-    },
-  },
+  }
 }
 </script>
 

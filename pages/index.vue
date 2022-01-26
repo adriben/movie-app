@@ -12,7 +12,11 @@
     <!-- Movie -->
     <h2 v-if="searchedMovies.length === 0">Latest release</h2>
     <div class="container movies">
-      <div id="movie-grid" class="movies-grid" v-if="searchedMovies.length === 0">
+      <div
+        id="movie-grid"
+        class="movies-grid"
+        v-if="searchedMovies.length === 0"
+      >
         <div v-for="(movie, index) in movies" :key="index" class="movie">
           <div class="movie-img">
             <img
@@ -86,7 +90,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   name: 'IndexPage',
@@ -95,7 +99,7 @@ export default {
       movies: [],
       searchedMovies: [],
       searchInput: '',
-      apiKey: process.env.VUE_APP_API_KEY
+      apiKey: process.env.VUE_APP_API_KEY,
     }
   },
   async fetch() {
@@ -105,7 +109,6 @@ export default {
     }
     if (this.searchInput !== '') {
       await this.searchMovies()
-      
     }
   },
   fetchDelay: 1000,
@@ -127,14 +130,13 @@ export default {
       result.data.results.forEach((movie) => {
         this.searchedMovies.push(movie)
       })
-      
     },
 
     clearSearch() {
       this.searchInput = ''
       this.searchedMovies = []
     },
-  }
+  },
 }
 </script>
 

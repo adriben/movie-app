@@ -1,20 +1,19 @@
 <template>
-<div class="hero">
-    <img src="../assets/images/Clouzot02.jpg" alt="Clouzot movie">
+  <div class="hero">
+    <img src="../assets/images/Clouzot02.jpg" alt="Clouzot movie" />
     <div class="text-container">
-        <div class="text">
-            <span class="mini-heading">Movie search engine</span>
-            <h1><span>Best</span><span class="greenTitle">Of</span>Movies</h1>
-            <a href="#movie-grid" class="button">View Movies</a>
-        </div>
+      <div class="text">
+        <span class="mini-heading">Movie search engine</span>
+        <h1><span>Best</span><span class="greenTitle">Of</span>Movies</h1>
+        <a href="#movie-grid" class="button">View Movies</a>
+      </div>
     </div>
-</div>
-  
+  </div>
 </template>
 
 <script>
 export default {
- name: "Hero-pics"
+  name: 'Hero-pics',
 }
 </script>
 
@@ -76,8 +75,8 @@ export default {
       span {
         font-weight: 500;
       }
-      .greenTitle{
-        color:#128902;
+      .greenTitle {
+        color: #128902;
       }
     }
     .button {

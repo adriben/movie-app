@@ -2,6 +2,8 @@
   <div class="home">
     <Hero-pics />
     <div class="container search">
+
+     
       <input
         type="text"
         placeholder="Search"
@@ -9,6 +11,8 @@
         @keyup.enter="$fetch"
       />
     </div>
+     <!-- Loader -->
+      <Loading-spiner v-if="$fetchState.pending" />
     <!-- Movie -->
     <h2 v-if="searchedMovies.length === 0">Latest release</h2>
     <div class="container movies">

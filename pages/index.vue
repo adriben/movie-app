@@ -27,7 +27,7 @@
             <p class="review">
               {{ movie.vote_average }}
             </p>
-            <p class="overview">
+            <p class="overview" v-if="movie.overview">
               {{ movie.overview }}
             </p>
           </div>
@@ -55,7 +55,7 @@
           :key="index"
           class="movie"
         >
-          <div class="movie-img">
+          <div class="movie-img" v-if="movie.poster_path">
             <img
               :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
               alt=""

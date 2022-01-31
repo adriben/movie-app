@@ -108,7 +108,11 @@ export default {
       return
     }
     if (this.searchInput !== '') {
+      if(this.searchedMovies){
+        this.searchedMovies = []
+      }
       await this.searchMovies()
+      
     }
   },
   fetchDelay: 1000,

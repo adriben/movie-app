@@ -25,7 +25,7 @@ export default {
     methods: {
         async getSingleMovie() {
         
-        const data = axios.get(`https://api.themoviedb.org/3/movie/${this.$route.movieid}?api_key=${this.apiKey}&language=en-US`)
+        const data = axios.get(`https://api.themoviedb.org/3/movie/${this.$route.movieid}?api_key=65edaf62da630f3d1bc494487dfe9722&language=en-US`)
         
         const result = await data
         this.movie = result.data

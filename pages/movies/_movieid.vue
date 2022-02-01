@@ -36,9 +36,14 @@ import axios from 'axios';
 
 export default {
     name: 'single-movie',
+    head() {
+      return {
+          title: this.movie.title
+      }
+    },
     data(){
         return {
-            movie: {},
+            movie: "",
             apiKey: process.env.VUE_APP_API_KEY,
 
         }

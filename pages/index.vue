@@ -98,6 +98,19 @@ import axios from 'axios'
 
 export default {
   name: 'IndexPage',
+  head(){
+      return {
+        title: 'Movie App - Latest streaming info',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Get all the latest streaming movies in theaters and online',
+            
+          }
+        ]
+      }
+  },
   data() {
     return {
       movies: [],
